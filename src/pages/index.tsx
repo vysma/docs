@@ -20,6 +20,9 @@ function HomepageHeader() {
           >
             Getting Started
           </Link>
+          <Link className="button button--lg" to="/docs/intro">
+            Tutorial
+          </Link>
         </div>
       </div>
     </header>

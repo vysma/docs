@@ -94,15 +94,15 @@ const config = {
             items: [
               {
                 label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+                href: "https://stackoverflow.com/questions/tagged/vysma",
               },
               {
                 label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
+                href: "https://discordapp.com/invite/vysma",
               },
               {
                 label: "Twitter",
-                href: "https://twitter.com/docusaurus",
+                href: "https://twitter.com/vysma_io",
               },
             ],
           },

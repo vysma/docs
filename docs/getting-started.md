@@ -6,42 +6,61 @@ sidebar_position: 2
 
 Let's discover **Vysma**.
 
-## Getting Started
-
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+Get started by **creating a new Vysma application**.
 
 ### What you'll need
 
 - [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
   - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- [VSCode](https://code.visualstudio.com/download) for TypeScript intellisense:
 
-## Generate a new site
+## Install the libraries
 
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
+Basic Vysma application can be installed with two packages: the `@vysma/kernel` for registering application module, and the `@vysma/lambda` for functional programming that's fully compatible with Vysma design pattern.
 
 ```bash
-cd my-website
-npm run start
+npm install @vysma/kernel @vysma/lambda
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+Or using Yarn:
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+```bash
+yarn add @vysma/kernel @vysma/lambda
+```
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+## Understanding Vysma architecture
+
+Vysma works by event-based mechanism,
+
+### Vysma Source
+
+This is the original of event emission. You can think it of a factory or the provider in other programming architecture.
+
+Anyone can implement a basic Vysma Source
+
+```javascript
+import { createSource } from "@vysma/kernel";
+
+const intervalSource = createSource(
+  {
+    events: {
+      elapse: ({ value }: ClockEventPayload): ClockEventNames => null,
+    },
+  },
+  (props: SourceProps, { emit }) => {
+    let i = 0;
+    const { elapse } = emit;
+
+    return setInterval(() => {
+      i++;
+      elapse({
+        value: i,
+      });
+    }, props.duration);
+  }
+);
+```
+
+### Vysma Trigger
+
+While defining new Source can be a little bit tricky, but ultizing its event is pretty simple.
