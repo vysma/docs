@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Vysma",
-  tagline: "Plug and play library for modern application development",
+  tagline: "A TypeScript library for declarative application development",
   url: "https://vysma.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
